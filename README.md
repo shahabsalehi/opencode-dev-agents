@@ -459,6 +459,11 @@ Plugin configuration in `opencode.json`:
 - Store file analysis results
 - Remember previous refactoring decisions
 
+### Delegation + Memory Roadmap
+- **Agent-to-agent delegation**: add a coordinator that can hand off tasks to specialist agents with explicit handoff schemas, allowed targets, and escalation rules to prevent unsafe or circular delegation.
+- **Per-command state**: persist command inputs, outputs, and decisions with retention/TTL to ensure reproducibility and auditable change history.
+- **Dynamic prompt compaction**: store a structured memory summary per command and continuously compact it by extracting stable decisions, constraints, and TODOs while discarding redundant details to reduce token usage without sacrificing code quality.
+
 ### Progressive Disclosure
 - Start with high-level analysis
 - Drill down only into problematic areas
