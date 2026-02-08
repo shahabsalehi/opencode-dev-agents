@@ -1,0 +1,45 @@
+{
+  "name": "swe-sworm-plugin",
+  "version": "1.0.0",
+  "description": "Advanced Software Engineering Swarm Plugin - Fast, efficient code analysis, generation, and optimization with minimal token usage",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "clean": "rm -rf dist",
+    "prepare": "npm run build",
+    "validate": "tsc --noEmit"
+  },
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "swarm",
+    "swe",
+    "code-analysis",
+    "refactoring",
+    "testing",
+    "performance",
+    "optimization"
+  ],
+  "author": "SWE Swarm Team",
+  "license": "MIT",
+  "peerDependencies": {
+    "@opencode-ai/plugin": "^0.x"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0",
+    "@types/node": "^20.0.0"
+  },
+  "files": [
+    "dist",
+    ".opencode",
+    "README.md",
+    "LICENSE",
+    "opencode.json"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "tools": {
+    "codeAnalyzer": {
+      "enabled": true
+    },
+    "dependencyGraph": {
+      "enabled": true
+    },
+    "testGenerator": {
+      "enabled": true
+    },
+    "bugDetector": {
+      "enabled": true
+    },
+    "refactorEngine": {
+      "enabled": true
+    }
+  },
+  "mcp": {
+    "servers": {
+      "config": "mcp/opencode.json"
+    }
+  }
+}
