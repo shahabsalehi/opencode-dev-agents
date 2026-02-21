@@ -1,0 +1,82 @@
+Business Source License 1.1
+
+Parameters
+
+Licensor: Shahab Salehi
+Licensed Work: opencode-dev-agents (the source code in this repository)
+Additional Use Grant: You may copy, modify, and use this software for personal,
+educational, evaluation, and non-production internal research purposes.
+Change Date: 2029-02-20
+Change License: Apache License, Version 2.0
+
+Terms
+
+The Licensor hereby grants you the right to copy, modify, create derivative
+works, redistribute, and make non-production use of the Licensed Work. The
+Licensed Work is provided under the terms of this Business Source License until
+the Change Date.
+
+On the Change Date, this license will automatically convert to the Change
+License for all copies of the Licensed Work.
+
+If your use does not qualify under the Additional Use Grant, then your use is
+not permitted under this license prior to the Change Date.
+
+Notice
+
+The Business Source License is not an Open Source license. Use of the Licensed
+Work in production is restricted until the Change Date.
+
+Full license text
+
+Use is governed by the Business Source License 1.1 included below.
+
+---
+
+Business Source License 1.1
+
+License text Copyright (c) 2017 MariaDB Corporation Ab, All Rights Reserved.
+"Business Source License" is a trademark of MariaDB Corporation Ab.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this license (the "License") to use, copy, modify, create derivative works,
+and redistribute the Software, provided that the Licensor's obligations under
+this License are observed.
+
+This License does not grant permission to use the Software in production except
+as provided by the Additional Use Grant.
+
+For purposes of this License:
+
+"Licensor" means the person or entity offering the Software under this
+License.
+
+"Software" means the original work of authorship made available under this
+License, including all modifications and derivative works thereof.
+
+"Production" means use of the Software in any environment where it serves
+request traffic or business operations other than personal, educational,
+evaluation, or internal research use.
+
+You may make Production use of the Software only as allowed under the
+Additional Use Grant. Any other Production use is prohibited until the Change
+Date.
+
+The Licensor may release new versions of the Software under this License with
+different Change Dates or Additional Use Grants. This License applies only to
+the specific version of the Software you received.
+
+On the Change Date, this License will change to the Change License for that
+version of the Software.
+
+If you violate this License, your rights under this License will terminate
+automatically and immediately. Your rights may be reinstated if you cure the
+violation and come into full compliance.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. IN NO EVENT
+SHALL THE LICENSOR OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING
+FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+IN THE SOFTWARE.

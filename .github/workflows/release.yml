@@ -1,0 +1,38 @@
+name: Release Hardening
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release-check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate and build
+        run: npm run validate && npm run build
+
+      - name: Test and coverage
+        run: npm test && npm run coverage
+
+      - name: Package dry run
+        run: npm pack --dry-run
+
+      - name: Publish dry run
+        run: npm publish --dry-run

@@ -1,0 +1,51 @@
+---
+import { Github } from 'lucide-astro';
+
+const GITHUB_URL = 'https://github.com/shahabsalehi/opencode-dev-agents';
+const CURRENT_YEAR = new Date().getFullYear();
+---
+
+<footer class="py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-200 dark:border-gray-800">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+      <!-- Left side -->
+      <div class="flex items-center space-x-6">
+        <span class="text-gray-600 dark:text-gray-400">
+          © {CURRENT_YEAR} Agents
+        </span>
+        
+        <span class="text-gray-300 dark:text-gray-700">|</span>
+        
+        <a 
+          href="https://github.com/shahabsalehi/opencode-dev-agents/blob/main/LICENSE" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+        >
+          BUSL-1.1 License
+        </a>
+      </div>
+      
+      <!-- Right side -->
+      <div class="flex items-center space-x-6">
+        <a
+          href={GITHUB_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+        >
+          <Github class="w-5 h-5" />
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Disclaimer -->
+    <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800">
+      <p class="text-xs text-center text-gray-500 dark:text-gray-500">
+        This is an independent plugin for OpenCode. 
+        Not affiliated with or endorsed by OpenCode or its creators.
+      </p>
+    </div>
+  </div>
+</footer>

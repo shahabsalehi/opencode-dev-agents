@@ -1,0 +1,283 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://swe-sworm.dev/schema.json",
+  "title": "SWE Sworm Plugin Config",
+  "type": "object",
+  "properties": {
+    "mode": {
+      "type": "string",
+      "enum": ["strict", "balanced", "research", "autopilot"]
+    },
+    "profile": {
+      "type": "string",
+      "enum": ["strict", "balanced", "research", "autopilot", "custom"]
+    },
+    "tools": {
+      "type": "object",
+      "properties": {
+        "codeAnalyzer": {
+          "type": "object",
+          "properties": {
+            "mode": { "type": "string", "enum": ["fast", "balanced", "precise"] },
+            "threshold": { "type": "number" },
+            "maxFiles": { "type": "number" },
+            "diffOnly": { "type": "boolean" }
+          },
+          "additionalProperties": false
+        },
+        "bugDetector": {
+          "type": "object",
+          "properties": {
+            "mode": { "type": "string", "enum": ["fast", "balanced", "precise"] },
+            "severity": { "type": "string", "enum": ["all", "low", "medium", "high", "critical"] },
+            "maxResults": { "type": "number" },
+            "maxFiles": { "type": "number" },
+            "diffOnly": { "type": "boolean" }
+          },
+          "additionalProperties": false
+        },
+        "dependencyGraph": {
+          "type": "object",
+          "properties": {
+            "depth": { "type": "number" },
+            "maxFiles": { "type": "number" },
+            "diffOnly": { "type": "boolean" }
+          },
+          "additionalProperties": false
+        },
+        "testGenerator": {
+          "type": "object",
+          "properties": {
+            "framework": { "type": "string" },
+            "diffOnly": { "type": "boolean" },
+            "includePrivate": { "type": "boolean" }
+          },
+          "additionalProperties": false
+        },
+        "refactorEngine": {
+          "type": "object",
+          "properties": {
+            "mode": { "type": "string", "enum": ["lint", "precision"] },
+            "dryRun": { "type": "boolean" },
+            "diffOnly": { "type": "boolean" }
+          },
+          "additionalProperties": false
+        },
+        "reviewTool": {
+          "type": "object",
+          "properties": {
+            "mode": { "type": "string", "enum": ["fast", "balanced", "precise"] },
+            "minHighConfidenceRatio": { "type": "number" },
+            "focus": { "type": "string", "enum": ["all", "security", "performance", "quality", "style"] },
+            "diffOnly": { "type": "boolean" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "context": {
+      "type": "object",
+      "properties": {
+        "linesPerFile": { "type": "number" },
+        "totalLines": { "type": "number" }
+      },
+      "additionalProperties": false
+    },
+    "planFirst": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "maxPlanAgeMs": { "type": "number", "minimum": 1000 }
+      },
+      "additionalProperties": false
+    },
+    "routing": {
+      "type": "object",
+      "properties": {
+        "defaultAgent": { "type": "string" },
+        "preferStrongModelForWrite": { "type": "boolean" },
+        "escalationRules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "pattern": { "type": "string" },
+              "agent": { "type": "string" }
+            },
+            "required": ["pattern", "agent"],
+            "additionalProperties": false
+          }
+        },
+        "maxDepth": { "type": "number", "minimum": 1 },
+        "maxNodesPerChain": { "type": "number", "minimum": 1 },
+        "maxParallelDelegations": { "type": "number", "minimum": 1 }
+      },
+      "additionalProperties": false
+    },
+    "agentModels": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "model": { "type": "string" },
+          "modelParameters": { "type": "object" }
+        },
+        "required": ["model"],
+        "additionalProperties": true
+      }
+    },
+    "benchmarkProfile": { "type": "string" },
+    "approval": {
+      "type": "object",
+      "properties": {
+        "ttlMs": { "type": "number", "minimum": 1000 },
+        "defaultReason": { "type": "string" },
+        "enforce": { "type": "boolean" },
+        "contextRules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "pathPrefix": { "type": "string" },
+              "requireApproval": { "type": "boolean" }
+            },
+            "required": ["pathPrefix", "requireApproval"],
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "verification": {
+      "type": "object",
+      "properties": {
+        "enforceOnMutation": { "type": "boolean" },
+        "minCoverage": { "type": "number", "minimum": 0, "maximum": 100 }
+      },
+      "additionalProperties": false
+    },
+    "strictControl": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "enforceRedlines": { "type": "boolean" },
+        "recordOnly": { "type": "boolean" },
+        "adaptive": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean" }
+          },
+          "additionalProperties": false
+        },
+        "mcpEnabled": { "type": "boolean" },
+        "mcpAllowlist": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "mcpDenylist": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "mcpCapabilityRules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "serverPrefix": { "type": "string" },
+              "maxCallsPerSession": { "type": "number", "minimum": 1 },
+              "capabilities": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": ["read", "write", "execute", "network"]
+                }
+              }
+            },
+            "required": ["serverPrefix"],
+            "additionalProperties": false
+          }
+        },
+        "delegationMaxDepth": { "type": "number", "minimum": 1 },
+        "delegationMaxNodesPerChain": { "type": "number", "minimum": 1 },
+        "delegationReturnDeadlineMs": { "type": "number", "minimum": 1000 },
+        "budgets": {
+          "type": "object",
+          "properties": {
+            "maxChangedFiles": { "type": "number", "minimum": 1 },
+            "maxTotalLocDelta": { "type": "number", "minimum": 1 },
+            "maxNewFiles": { "type": "number", "minimum": 1 },
+            "maxToolCalls": { "type": "number", "minimum": 1 }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "compatibility": {
+      "type": "object",
+      "properties": {
+        "enableExperimentalCompaction": { "type": "boolean" },
+        "enableSystemTransform": { "type": "boolean" },
+        "enableDelegationRuntime": { "type": "boolean" },
+        "enableVerificationContract": { "type": "boolean" },
+        "enableChatMessagesTransform": { "type": "boolean" },
+        "enableTextCompleteHook": { "type": "boolean" },
+        "enableAuthHook": { "type": "boolean" },
+        "enableCompactionRescue": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "storage": {
+      "type": "object",
+      "properties": {
+        "delegationsTTL": { "type": ["string", "number"] },
+        "thoughtsTTL": { "type": ["string", "number"] },
+        "maxPromptLength": { "type": "number" },
+        "maxResultLength": { "type": "number" },
+        "maxAgentLength": { "type": "number" },
+        "maxTitleLength": { "type": "number" },
+        "maxContentLength": { "type": "number" }
+      },
+      "additionalProperties": false
+    },
+    "skills": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "allowlist": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "loadFromDirectory": { "type": "boolean" },
+        "directory": { "type": "string" },
+        "defaultRiskLevel": { "type": "string", "enum": ["low", "medium", "high"] }
+      },
+      "additionalProperties": false
+    },
+    "secondOpinion": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "minMutationsBeforeTrigger": { "type": "number", "minimum": 0 },
+        "tier1TimeoutMs": { "type": "number", "minimum": 100 },
+        "tier2TimeoutMs": { "type": "number", "minimum": 100 },
+        "tier1Agent": { "type": "string" },
+        "tier2Agent": { "type": "string" },
+        "escalateConfidenceThreshold": { "type": "number", "minimum": 0, "maximum": 1 },
+        "maxEscalationsPerSession": { "type": "number", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "autopilot": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "cumulativeRiskThreshold": { "type": "number", "minimum": 0 },
+        "maxStepsBeforePause": { "type": "number", "minimum": 1 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

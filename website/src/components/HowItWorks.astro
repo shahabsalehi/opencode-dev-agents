@@ -1,0 +1,76 @@
+---
+import { FileText, Shield, ClipboardCheck } from 'lucide-astro';
+---
+
+<section class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800/50">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        How It Works
+      </h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        Three simple steps to safer, more reliable AI-assisted development
+      </p>
+    </div>
+    
+    <!-- Flow diagram -->
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Step 1 -->
+      <div class="relative">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-200 dark:border-gray-700">
+          <div class="w-12 h-12 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mb-6">
+            <FileText class="w-6 h-6 text-primary-600 dark:text-primary-400" />
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+            1. Plan
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            Every mutation starts with a plan. The agent analyzes the codebase, identifies affected files, and creates a step-by-step execution strategy before making any changes.
+          </p>
+        </div>
+        <!-- Arrow -->
+        <div class="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
+          <svg class="w-8 h-8 text-gray-300 dark:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </div>
+      
+      <!-- Step 2 -->
+      <div class="relative">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-200 dark:border-gray-700">
+          <div class="w-12 h-12 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mb-6">
+            <Shield class="w-6 h-6 text-primary-600 dark:text-primary-400" />
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+            2. Approve
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            Policy gates enforce compliance. Redlines prevent dangerous operations, budgets limit resource usage, and approval workflows ensure human oversight for critical changes.
+          </p>
+        </div>
+        <!-- Arrow -->
+        <div class="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
+          <svg class="w-8 h-8 text-gray-300 dark:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </div>
+      
+      <!-- Step 3 -->
+      <div>
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-200 dark:border-gray-700">
+          <div class="w-12 h-12 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mb-6">
+            <ClipboardCheck class="w-6 h-6 text-primary-600 dark:text-primary-400" />
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+            3. Execute
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            Changes are applied with full traceability. Every operation is logged, verified against the plan, and rollback capabilities ensure you can always revert if needed.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

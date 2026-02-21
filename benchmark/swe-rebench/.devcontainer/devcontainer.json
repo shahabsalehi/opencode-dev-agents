@@ -1,0 +1,21 @@
+{
+  "name": "opencode-benchmark",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/danzilberdan/devcontainers/opencode:0": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.10"
+    }
+  },
+  "mounts": [
+    "source=${localEnv:HOME}/.local/share/opencode/auth.json,target=/tmp/opencode-auth.json,type=bind,consistency=cached"
+  ],
+  "containerEnv": {
+    "OPENROUTER_API_KEY": "${localEnv:OPENROUTER_API_KEY}"
+  },
+  "postCreateCommand": "mkdir -p ~/.local/share/opencode && if [ -f /tmp/opencode-auth.json ]; then cp /tmp/opencode-auth.json ~/.local/share/opencode/auth.json; fi && npm install -g /workspaces/opencode-dev-agents",
+  "remoteUser": "vscode"
+}

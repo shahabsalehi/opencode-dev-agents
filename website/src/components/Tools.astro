@@ -1,0 +1,81 @@
+---
+import { Cpu, Search, Wrench, FlaskConical, Eye, GitBranch } from 'lucide-astro';
+
+const tools = [
+  {
+    icon: Cpu,
+    name: 'Code Analyzer',
+    description: 'Static analysis and quality checks',
+  },
+  {
+    icon: Search,
+    name: 'Bug Detector',
+    description: 'Automated bug identification',
+  },
+  {
+    icon: Wrench,
+    name: 'Refactor Engine',
+    description: 'Safe code transformations',
+  },
+  {
+    icon: FlaskConical,
+    name: 'Test Generator',
+    description: 'Automated test creation',
+  },
+  {
+    icon: Eye,
+    name: 'Review Tool',
+    description: 'Code review assistance',
+  },
+  {
+    icon: GitBranch,
+    name: 'AST Tools',
+    description: 'Abstract syntax tree operations',
+  },
+];
+---
+
+<section class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800/50">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        Available Tools
+      </h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        Specialized capabilities for comprehensive code analysis and modification
+      </p>
+    </div>
+    
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {tools.map((tool) => (
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-700 transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mb-4">
+            <tool.icon class="w-5 h-5 text-primary-600 dark:text-primary-400" />
+          </div>
+          
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+            {tool.name}
+          </h3>
+          
+          <p class="text-sm text-gray-600 dark:text-gray-300">
+            {tool.description}
+          </p>
+        </div>
+      ))}
+    </div>
+    
+    <div class="mt-12 text-center">
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        Plus 10+ specialized agents for orchestration, exploration, and review.
+        <a 
+          href="https://github.com/shahabsalehi/opencode-dev-agents#tools" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="text-primary-600 dark:text-primary-400 hover:underline"
+        >
+          View full documentation →
+        </a>
+      </p>
+    </div>
+  </div>
+</section>

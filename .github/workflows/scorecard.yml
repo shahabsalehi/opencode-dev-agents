@@ -1,0 +1,48 @@
+name: Governance Scorecard
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  scorecard:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Generate governance scorecard
+        run: |
+          node --input-type=module -e "import { mkdirSync, writeFileSync } from 'node:fs'; import { DEFAULT_STRICT_CONTROL_POLICY } from './dist/policy/defaults.js'; import { generateScorecard } from './dist/benchmark/scorecard-generator.js'; const card = generateScorecard({ projectID: process.env.GITHUB_REPOSITORY ?? 'local', strictPolicy: DEFAULT_STRICT_CONTROL_POLICY }); mkdirSync('artifacts', { recursive: true }); writeFileSync('artifacts/governance-scorecard.json', JSON.stringify(card, null, 2));"
+
+      - name: Enforce governance floor
+        run: |
+          node --input-type=module -e "import { readFileSync } from 'node:fs'; const card = JSON.parse(readFileSync('artifacts/governance-scorecard.json', 'utf8')); if (card.scores.governance < 8) { console.error('Governance score below minimum floor:', card.scores.governance); process.exit(1); }"
+
+      - name: Publish scorecard summary
+        run: |
+          node --input-type=module -e "import { appendFileSync, readFileSync } from 'node:fs'; const card = JSON.parse(readFileSync('artifacts/governance-scorecard.json', 'utf8')); const avg = Object.values(card.scores).reduce((a, b) => a + b, 0) / Object.values(card.scores).length; const lines = ['## Governance Scorecard', '', '- Project: ' + card.projectID, '- Governance: ' + card.scores.governance, '- Tool Breadth: ' + card.scores.toolBreadth, '- Reliability: ' + card.scores.reliability, '- Average: ' + avg.toFixed(2)]; appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join('\n') + '\n');"
+
+      - name: Upload scorecard artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: governance-scorecard
+          path: artifacts/governance-scorecard.json
