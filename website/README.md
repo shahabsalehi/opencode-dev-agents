@@ -1,6 +1,6 @@
 # Agents Website
 
-Professional landing page for the opencode-dev-agents plugin.
+Professional landing page for the swe-sworm-plugin.
 
 ## Logo Setup
 

@@ -1,4 +1,4 @@
-# opencode-dev-agents
+# swe-sworm-plugin
 
 Governance-first OpenCode plugin for safer, more predictable software engineering workflows.
 
