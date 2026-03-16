@@ -1,0 +1,74 @@
+{
+  "name": "opencode-dev-agents",
+  "version": "1.0.0",
+  "description": "Governance-first OpenCode plugin for safer, more predictable software engineering workflows",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./schema.json": "./swe-sworm.schema.json"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "clean": "rm -rf dist",
+    "prepare": "npm run build",
+    "validate": "tsc --noEmit",
+    "doctor": "npm run build && node dist/doctor.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "swarm",
+    "swe",
+    "code-analysis",
+    "refactoring",
+    "testing",
+    "performance",
+    "optimization"
+  ],
+  "author": "SWE Swarm Team",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shahabsalehi/opencode-dev-agents.git"
+  },
+  "homepage": "https://github.com/shahabsalehi/opencode-dev-agents#readme",
+  "bugs": {
+    "url": "https://github.com/shahabsalehi/opencode-dev-agents/issues"
+  },
+  "peerDependencies": {
+    "@opencode-ai/plugin": "^1.2.5"
+  },
+  "devDependencies": {
+    "@opencode-ai/plugin": "^1.2.5",
+    "@types/node": "^20.0.0",
+    "@vitest/coverage-v8": "^4.0.18",
+    "vitest": "^4.0.18"
+  },
+  "dependencies": {
+    "glob": "^10.3.10",
+    "pyright": "^1.1.408",
+    "typescript": "^5.3.0",
+    "yaml-language-server": "^1.19.2"
+  },
+  "files": [
+    "dist",
+    ".opencode",
+    "swe-sworm.schema.json",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "opencode.json"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

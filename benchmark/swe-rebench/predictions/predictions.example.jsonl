@@ -1,0 +1,1 @@
+{"instance_id":"biopython__biopython-5005","model_name_or_path":"your-model-name","model_patch":"diff --git a/example.py b/example.py\nindex 1111111..2222222 100644\n--- a/example.py\n+++ b/example.py\n@@ -1,1 +1,1 @@\n-print(\"broken\")\n+print(\"fixed\")\n"}

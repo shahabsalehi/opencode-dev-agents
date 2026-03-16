@@ -1,0 +1,27 @@
+{
+  "source": "manual-estimates",
+  "currency": "USD",
+  "unit": "per_1m_tokens",
+  "models": {
+    "opencode-go/glm-4.7": {
+      "input_usd_per_1m": null,
+      "output_usd_per_1m": null
+    },
+    "opencode-go/glm-5": {
+      "input_usd_per_1m": null,
+      "output_usd_per_1m": null
+    },
+    "github-copilot/gpt-4.1": {
+      "input_usd_per_1m": null,
+      "output_usd_per_1m": null
+    },
+    "github-copilot/gpt-5": {
+      "input_usd_per_1m": null,
+      "output_usd_per_1m": null
+    },
+    "github-copilot/gpt-5-codex": {
+      "input_usd_per_1m": null,
+      "output_usd_per_1m": null
+    }
+  }
+}

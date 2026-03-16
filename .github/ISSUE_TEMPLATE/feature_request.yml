@@ -1,0 +1,33 @@
+name: Feature request
+description: Propose a scoped enhancement.
+title: "feat: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem statement
+      description: What operator pain does this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Keep this scoped and implementation-agnostic.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Readiness checklist
+      options:
+        - label: I searched for similar open issues.
+          required: true
+        - label: This request is specific and not a broad idea dump.
+          required: true

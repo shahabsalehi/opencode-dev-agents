@@ -1,0 +1,114 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "tools": {
+    "codeAnalyzer": {
+      "enabled": true
+    },
+    "dependencyGraph": {
+      "enabled": true
+    },
+    "testGenerator": {
+      "enabled": true
+    },
+    "bugDetector": {
+      "enabled": true
+    },
+    "refactorEngine": {
+      "enabled": true
+    },
+    "lspGotoDefinition": {
+      "enabled": true
+    },
+    "lspFindReferences": {
+      "enabled": true
+    },
+    "lspDocumentSymbols": {
+      "enabled": true
+    },
+    "lspDiagnostics": {
+      "enabled": true
+    },
+    "astGrepSearch": {
+      "enabled": true
+    },
+    "astGrepReplace": {
+      "enabled": true
+    }
+  },
+  "mcp": {
+    "github": {
+      "type": "remote",
+      "url": "https://api.github.com/mcp",
+      "enabled": true,
+      "headers": {
+        "Authorization": "Bearer {env:GITHUB_TOKEN}",
+        "Accept": "application/vnd.github.v3+json"
+      },
+      "oauth": {
+        "clientId": "{env:GITHUB_CLIENT_ID}",
+        "scope": "repo read:user read:org"
+      },
+      "tools": [
+        "get_repository",
+        "get_pull_request",
+        "list_pull_requests",
+        "create_pull_request",
+        "get_issue",
+        "list_issues",
+        "create_issue",
+        "search_code",
+        "get_file_contents",
+        "list_directory_contents"
+      ]
+    },
+    "sonarqube": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-sonarqube"],
+      "enabled": false,
+      "environment": {
+        "SONAR_TOKEN": "{env:SONAR_TOKEN}",
+        "SONAR_HOST": "{env:SONAR_HOST}"
+      },
+      "description": "Code quality analysis and security vulnerability detection"
+    },
+    "perplexity": {
+      "type": "remote",
+      "url": "https://api.perplexity.ai/mcp",
+      "enabled": false,
+      "headers": {
+        "Authorization": "Bearer {env:PERPLEXITY_API_KEY}"
+      },
+      "description": "AI-powered search and research capabilities"
+    },
+    "vscode-lsp": {
+      "type": "local",
+      "command": ["code", "--mcp-server"],
+      "enabled": false,
+      "description": "Language Server Protocol integration for IDE features"
+    },
+    "playwright": {
+      "type": "local",
+      "command": ["npx", "-y", "@playwright/mcp@latest"],
+      "enabled": false,
+      "environment": {
+        "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH": "{env:PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH}"
+      },
+      "description": "Browser automation for E2E testing"
+    },
+    "docker": {
+      "type": "local",
+      "command": ["docker", "mcp-server"],
+      "enabled": false,
+      "description": "Docker container management and operations"
+    }
+  },
+  "permission": {
+    "*": "ask",
+    "read": "allow",
+    "glob": "allow",
+    "grep": "allow",
+    "list": "allow",
+    "edit": "ask",
+    "bash": "ask"
+  }
+}

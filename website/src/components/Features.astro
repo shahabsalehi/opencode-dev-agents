@@ -1,0 +1,63 @@
+---
+import { Lock, FileCheck, FileSearch } from 'lucide-astro';
+---
+
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        Core Concepts
+      </h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        Built-in safeguards that make AI-assisted development reliable
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Plan-First -->
+      <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
+        <div class="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-6">
+          <FileSearch class="w-6 h-6 text-blue-600 dark:text-blue-400" />
+        </div>
+        
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+          Plan-First Execution
+        </h3>
+        
+        <p class="text-gray-600 dark:text-gray-300">
+          No code changes without a plan. The system requires explicit planning for every mutation, ensuring the agent understands the full scope before acting.
+        </p>
+      </div>
+      
+      <!-- Policy Enforcement -->
+      <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
+        <div class="w-12 h-12 rounded-lg bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mb-6">
+          <Lock class="w-6 h-6 text-amber-600 dark:text-amber-400" />
+        </div>
+        
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+          Policy Enforcement
+        </h3>
+        
+        <p class="text-gray-600 dark:text-gray-300">
+          Configurable redlines prevent dangerous operations. Budgets control resource usage. Approval gates ensure human oversight for high-risk changes.
+        </p>
+      </div>
+      
+      <!-- Audit & Evidence -->
+      <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
+        <div class="w-12 h-12 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center mb-6">
+          <FileCheck class="w-6 h-6 text-green-600 dark:text-green-400" />
+        </div>
+        
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+          Audit & Evidence
+        </h3>
+        
+        <p class="text-gray-600 dark:text-gray-300">
+          Complete traceability of every action. Immutable logs, verification contracts, and evidence artifacts provide accountability and enable post-hoc analysis.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

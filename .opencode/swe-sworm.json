@@ -1,0 +1,159 @@
+{
+  "plugin": {
+    "swe-sworm": {
+      "tools": {
+        "codeAnalyzer": {
+          "mode": "fast",
+          "threshold": 70,
+          "maxFiles": 30,
+          "diffOnly": false
+        },
+        "bugDetector": {
+          "mode": "fast",
+          "severity": "medium",
+          "maxResults": 50,
+          "maxFiles": 100,
+          "diffOnly": false
+        },
+        "dependencyGraph": {
+          "depth": 3,
+          "maxFiles": 200,
+          "diffOnly": false
+        },
+        "testGenerator": {
+          "framework": "jest",
+          "diffOnly": false,
+          "includePrivate": false
+        },
+        "refactorEngine": {
+          "mode": "lint",
+          "dryRun": true,
+          "diffOnly": false
+        },
+        "reviewTool": {
+          "mode": "fast",
+          "minHighConfidenceRatio": 0.7,
+          "focus": "all",
+          "diffOnly": false
+        }
+      },
+      "context": {
+        "linesPerFile": 40,
+        "totalLines": 150
+      },
+      "routing": {
+        "defaultAgent": "main-orchestrator",
+        "preferStrongModelForWrite": true,
+        "escalationRules": [],
+        "maxDepth": 2,
+        "maxNodesPerChain": 3,
+        "maxParallelDelegations": 1
+      },
+      "approval": {
+        "enforce": false,
+        "ttlMs": 600000,
+        "defaultReason": "manual-approval",
+        "contextRules": []
+      },
+      "verification": {
+        "enforceOnMutation": true,
+        "minCoverage": 0
+      },
+      "secondOpinion": {
+        "enabled": true,
+        "minMutationsBeforeTrigger": 0,
+        "tier1TimeoutMs": 5000,
+        "tier2TimeoutMs": 8000,
+        "tier1Agent": "second-opinion",
+        "tier2Agent": "code-reviewer",
+        "escalateConfidenceThreshold": 0.72,
+        "maxEscalationsPerSession": 2
+      },
+      "compatibility": {
+        "enableExperimentalCompaction": true,
+        "enableSystemTransform": true,
+        "enableDelegationRuntime": true,
+        "enableVerificationContract": true,
+        "enableChatMessagesTransform": true,
+        "enableTextCompleteHook": false,
+        "enableAuthHook": false,
+        "enableCompactionRescue": true
+      },
+      "storage": {
+        "delegationsTTL": "7d",
+        "thoughtsTTL": "30d",
+        "maxPromptLength": 8000,
+        "maxResultLength": 40000,
+        "maxAgentLength": 100,
+        "maxTitleLength": 200,
+        "maxContentLength": 40000
+      },
+      "agentModels": {
+        "main-orchestrator": {
+          "model": "opencode-go/glm-4.7"
+        },
+        "code-architect": {
+          "model": "opencode-go/glm-4.7"
+        },
+        "code-reviewer": {
+          "model": "opencode-go/glm-4.7"
+        },
+        "bug-hunter": {
+          "model": "github-copilot/gpt-4.1"
+        },
+        "refactor-bot": {
+          "model": "github-copilot/gpt-4.1"
+        },
+        "test-writer": {
+          "model": "github-copilot/gpt-4.1"
+        },
+        "perf-optimizer": {
+          "model": "opencode-go/glm-5"
+        },
+        "explore": {
+          "model": "opencode-go/glm-4.7"
+        },
+        "PluginBuilder": {
+          "model": "github-copilot/gpt-4.1"
+        },
+        "second-opinion": {
+          "model": "opencode-go/glm-5"
+        }
+      },
+      "benchmarkProfile": "poor",
+      "mode": "balanced",
+      "planFirst": {
+        "enabled": true,
+        "maxPlanAgeMs": 1800000
+      },
+      "strictControl": {
+        "enabled": true,
+        "enforceRedlines": false,
+        "recordOnly": true,
+        "adaptive": {
+          "enabled": true
+        },
+        "mcpEnabled": true,
+        "mcpAllowlist": [],
+        "mcpDenylist": [],
+        "mcpCapabilityRules": [],
+        "delegationMaxDepth": 2,
+        "delegationMaxNodesPerChain": 3,
+        "delegationReturnDeadlineMs": 300000,
+        "budgets": {
+          "maxChangedFiles": 15,
+          "maxTotalLocDelta": 1000,
+          "maxNewFiles": 10,
+          "maxToolCalls": 80
+        }
+      },
+      "skills": {
+        "enabled": false,
+        "allowlist": [],
+        "loadFromDirectory": true,
+        "directory": ".opencode/skills",
+        "defaultRiskLevel": "medium"
+      }
+    }
+  }
+}

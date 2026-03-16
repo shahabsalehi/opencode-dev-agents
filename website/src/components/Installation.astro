@@ -1,0 +1,173 @@
+---
+import { Package, GitBranch as Git, Terminal, Copy, Check } from 'lucide-astro';
+
+const GITHUB_URL = 'https://github.com/shahabsalehi/opencode-dev-agents';
+---
+
+<section id="installation" class="py-20 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        Installation
+      </h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300">
+        Choose your preferred installation method
+      </p>
+    </div>
+    
+    <!-- Tabs -->
+    <div class="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+      <!-- Tab headers -->
+      <div class="flex border-b border-gray-200 dark:border-gray-700">
+        <button
+          id="tab-npm"
+          class="flex-1 flex items-center justify-center space-x-2 px-6 py-4 text-sm font-medium border-b-2 border-primary-500 text-primary-600 dark:text-primary-400 bg-primary-50/50 dark:bg-primary-900/10"
+          onclick="switchTab('npm')"
+        >
+          <Package class="w-4 h-4" />
+          <span>NPM</span>
+        </button>
+        
+        <button
+          id="tab-manual"
+          class="flex-1 flex items-center justify-center space-x-2 px-6 py-4 text-sm font-medium border-b-2 border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
+          onclick="switchTab('manual')"
+        >
+          <Git class="w-4 h-4" />
+          <span>Manual</span>
+        </button>
+      </div>
+      
+      <!-- Tab content -->
+      <div class="p-6 sm:p-8">
+        <!-- NPM Tab -->
+        <div id="content-npm" class="space-y-6">
+          <div>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              Install via npm (requires <a href="https://opencode.ai" target="_blank" rel="noopener noreferrer" class="text-primary-600 dark:text-primary-400 hover:underline">OpenCode</a>):
+            </p>
+            
+            <div class="relative">
+              <div class="bg-gray-900 rounded-lg p-4 font-mono text-sm text-gray-100 overflow-x-auto">
+                <div class="flex items-center space-x-2 text-gray-400 mb-2">
+                  <Terminal class="w-4 h-4" />
+                  <span class="text-xs">terminal</span>
+                </div>
+                <code>npm install opencode-dev-agents</code>
+              </div>
+              
+              <button
+                class="copy-btn absolute top-4 right-4 p-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-700 transition-colors"
+                data-command="npm install opencode-dev-agents"
+                aria-label="Copy command"
+              >
+                <Copy class="w-4 h-4 copy-icon" />
+                <Check class="w-4 h-4 check-icon hidden" />
+              </button>
+            </div>
+          </div>
+          
+          <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
+            <p class="text-sm text-blue-800 dark:text-blue-200">
+              <strong>Note:</strong> This plugin requires OpenCode to be installed and configured. 
+              The plugin integrates with OpenCode's plugin system and provides governance tools 
+              for AI-assisted development workflows.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Manual Tab -->
+        <div id="content-manual" class="space-y-6 hidden">
+          <div>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              Clone the repository and install manually:
+            </p>
+            
+            <div class="relative">
+              <div class="bg-gray-900 rounded-lg p-4 font-mono text-sm text-gray-100 overflow-x-auto">
+                <div class="flex items-center space-x-2 text-gray-400 mb-2">
+                  <Terminal class="w-4 h-4" />
+                  <span class="text-xs">terminal</span>
+                </div>
+                <div class="space-y-1">
+                  <code>git clone https://github.com/shahabsalehi/opencode-dev-agents.git</code>
+                  <br />
+                  <code>cd opencode-dev-agents</code>
+                  <br />
+                  <code>npm install</code>
+                  <br />
+                  <code>npm run build</code>
+                </div>
+              </div>
+              
+              <button
+                class="copy-btn absolute top-4 right-4 p-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-700 transition-colors"
+                data-command="git clone https://github.com/shahabsalehi/opencode-dev-agents.git
+cd opencode-dev-agents
+npm install
+npm run build"
+                aria-label="Copy command"
+              >
+                <Copy class="w-4 h-4 copy-icon" />
+                <Check class="w-4 h-4 check-icon hidden" />
+              </button>
+            </div>
+          </div>
+          
+          <a
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center space-x-2 text-primary-600 dark:text-primary-400 hover:underline"
+          >
+            <span>View repository on GitHub</span>
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  function switchTab(tab) {
+    // Update tab buttons
+    document.getElementById('tab-npm').className = tab === 'npm' 
+      ? 'flex-1 flex items-center justify-center space-x-2 px-6 py-4 text-sm font-medium border-b-2 border-primary-500 text-primary-600 dark:text-primary-400 bg-primary-50/50 dark:bg-primary-900/10'
+      : 'flex-1 flex items-center justify-center space-x-2 px-6 py-4 text-sm font-medium border-b-2 border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300';
+    
+    document.getElementById('tab-manual').className = tab === 'manual'
+      ? 'flex-1 flex items-center justify-center space-x-2 px-6 py-4 text-sm font-medium border-b-2 border-primary-500 text-primary-600 dark:text-primary-400 bg-primary-50/50 dark:bg-primary-900/10'
+      : 'flex-1 flex items-center justify-center space-x-2 px-6 py-4 text-sm font-medium border-b-2 border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300';
+    
+    // Update content
+    document.getElementById('content-npm').classList.toggle('hidden', tab !== 'npm');
+    document.getElementById('content-manual').classList.toggle('hidden', tab !== 'manual');
+  }
+  
+  // Copy functionality with error handling
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const command = btn.dataset.command;
+      try {
+        await navigator.clipboard.writeText(command);
+        
+        const copyIcon = btn.querySelector('.copy-icon');
+        const checkIcon = btn.querySelector('.check-icon');
+        
+        copyIcon.classList.add('hidden');
+        checkIcon.classList.remove('hidden');
+        
+        setTimeout(() => {
+          copyIcon.classList.remove('hidden');
+          checkIcon.classList.add('hidden');
+        }, 2000);
+      } catch (err) {
+        // Fallback: select text for manual copy
+        console.error('Failed to copy:', err);
+      }
+    });
+  });
+</script>

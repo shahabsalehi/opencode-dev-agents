@@ -1,0 +1,8 @@
+SWE-bench-fork/
+.venv/
+predictions/
+results/
+logs/
+.sandbox-home/
+__pycache__
+workspaces/

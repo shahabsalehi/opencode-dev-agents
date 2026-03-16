@@ -1,0 +1,155 @@
+{
+  "mode": "strict",
+  "tools": {
+    "codeAnalyzer": {
+      "mode": "precise",
+      "threshold": 70,
+      "maxFiles": 50,
+      "diffOnly": false
+    },
+    "bugDetector": {
+      "mode": "precise",
+      "severity": "all",
+      "maxResults": 100,
+      "maxFiles": 200,
+      "diffOnly": false
+    },
+    "dependencyGraph": {
+      "depth": 5,
+      "maxFiles": 500,
+      "diffOnly": false
+    },
+    "testGenerator": {
+      "framework": "jest",
+      "diffOnly": false,
+      "includePrivate": false
+    },
+    "refactorEngine": {
+      "mode": "precision",
+      "dryRun": true,
+      "diffOnly": false
+    },
+    "reviewTool": {
+      "mode": "precise",
+      "minHighConfidenceRatio": 0.7,
+      "focus": "all",
+      "diffOnly": false
+    }
+  },
+  "context": {
+    "linesPerFile": 60,
+    "totalLines": 200
+  },
+  "planFirst": {
+    "enabled": true,
+    "maxPlanAgeMs": 1800000
+  },
+  "routing": {
+    "defaultAgent": "main-orchestrator",
+    "preferStrongModelForWrite": true,
+    "escalationRules": [],
+    "maxDepth": 3,
+    "maxNodesPerChain": 5,
+    "maxParallelDelegations": 2
+  },
+  "agentModels": {
+    "main-orchestrator": {
+      "model": "github-copilot/gpt-5",
+      "modelParameters": {
+        "reasoning": {
+          "effort": "high"
+        }
+      }
+    },
+    "code-architect": {
+      "model": "github-copilot/gpt-5"
+    },
+    "code-reviewer": {
+      "model": "github-copilot/gpt-5"
+    },
+    "bug-hunter": {
+      "model": "github-copilot/gpt-5-codex"
+    },
+    "refactor-bot": {
+      "model": "github-copilot/gpt-5-codex"
+    },
+    "test-writer": {
+      "model": "github-copilot/gpt-5-codex"
+    },
+    "perf-optimizer": {
+      "model": "opencode-go/glm-5",
+      "modelParameters": {
+        "reasoning": {
+          "effort": "high"
+        }
+      }
+    },
+    "explore": {
+      "model": "opencode-go/glm-4.7"
+    },
+    "PluginBuilder": {
+      "model": "github-copilot/gpt-5"
+    },
+    "second-opinion": {
+      "model": "github-copilot/gpt-5"
+    }
+  },
+  "approval": {
+    "enforce": false,
+    "ttlMs": 600000,
+    "defaultReason": "manual-approval",
+    "contextRules": []
+  },
+  "verification": {
+    "enforceOnMutation": true,
+    "minCoverage": 80
+  },
+  "strictControl": {
+    "enabled": true,
+    "enforceRedlines": true,
+    "recordOnly": false,
+    "mcpEnabled": true,
+    "mcpAllowlist": [],
+    "mcpDenylist": [],
+    "mcpCapabilityRules": [],
+    "delegationMaxDepth": 3,
+    "delegationMaxNodesPerChain": 5,
+    "delegationReturnDeadlineMs": 600000
+  },
+  "compatibility": {
+    "enableExperimentalCompaction": true,
+    "enableSystemTransform": true,
+    "enableDelegationRuntime": true,
+    "enableVerificationContract": true,
+    "enableChatMessagesTransform": true,
+    "enableTextCompleteHook": false,
+    "enableAuthHook": false,
+    "enableCompactionRescue": true
+  },
+  "storage": {
+    "delegationsTTL": "7d",
+    "thoughtsTTL": "30d",
+    "maxPromptLength": 10000,
+    "maxResultLength": 50000,
+    "maxAgentLength": 100,
+    "maxTitleLength": 200,
+    "maxContentLength": 50000
+  },
+  "skills": {
+    "enabled": true,
+    "allowlist": [],
+    "loadFromDirectory": true,
+    "directory": ".opencode/skills",
+    "defaultRiskLevel": "medium"
+  },
+  "secondOpinion": {
+    "enabled": true,
+    "minMutationsBeforeTrigger": 0,
+    "tier1TimeoutMs": 5000,
+    "tier2TimeoutMs": 8000,
+    "tier1Agent": "second-opinion",
+    "tier2Agent": "code-reviewer",
+    "escalateConfidenceThreshold": 0.72,
+    "maxEscalationsPerSession": 2
+  }
+}
