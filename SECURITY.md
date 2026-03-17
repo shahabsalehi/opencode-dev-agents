@@ -11,7 +11,7 @@ If you discover a security vulnerability, please do **not** open a public issue.
 Use one of the following private channels:
 
 - GitHub Security Advisory (preferred)
-- Email: `security@shahabsalehi.dev`
+- Email: `security@vahu.dev`
 
 Include:
 
